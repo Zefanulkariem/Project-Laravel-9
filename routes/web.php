@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\Barang;
+use App\Models\Siswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,14 +79,34 @@ Route::get('myname/{nama?}', function($a = "Ali"){              // optinal parme
     return "Nami Abdi $a";
 });
 
-//menampilkan data dri database
-
-// Route::get('/testmodel', function () {
-//     $data = Post::all();
-//     return $data;
-// });
+Route::get('/testmodel', function () {       //menampilkan data dri database
+    $post = Post::all();
+    return view('tampil_post', compact('post'));  //untuk tampilan/templet agar menjadi tabel (terdapat di file tampilpost/views)
+});
 
 Route::get('/testbarang', function () {
     $a = Barang::all();
-    return $a;
+    return view('tampil_barang', compact('a'));
+});
+
+Route::get('/about', function() {
+    return view('about');
+});
+
+Route::get('/Siswa', function () {
+    $b = Siswa::all();                              //ORM dalam pemanggilan model
+    // $b = Siswa::find(5);
+    // $b = Siswa::where('jk','like','%l%')->get();
+
+
+    // $b = new Siswa;                 //merupakan cara untuk menmbahkan data/value
+    // $b->nama = "bisma hensom";
+    // $b->jk = "l";
+    // $b->alamat = "Bandung";
+    // $b->agama = "islam";
+    // $b->telepon = "85704369462";
+    // $b->email = "bism@gmail.com";
+    // $b->save();
+
+    return view('tampil_siswa', compact('b'));
 });
