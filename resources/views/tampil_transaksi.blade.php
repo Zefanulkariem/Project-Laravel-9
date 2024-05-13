@@ -11,16 +11,22 @@
         <tr>
             <th>No</th>
             <th>ID</th>
-            <th>Title</th>
-            <th>Post</th>
+            <th>Nama Barang</th>
+            <th>Nama Pembeli</th>
+            <th>Jenis Kelamin</th>
+            <th>Jumlah</th>
+            <th>Tanggal Transaksi</th>
         </tr>
         @php $no = 1; @endphp
-        @foreach($post as $data)
+        @foreach($trans as $data)
             <tr>
                 <td>{{ $no++ }}</td>
                 <td>{{ $data->id }}</td>
-                <td>{{ $data->title }}</td>
-                <td>{{ $data->content }}</td>
+                <td>{{ $data->Barang2->nama_barang }}</td>
+                <td>{{ $data->Pembeli->nama_pembeli }}</td>
+                <td>{{ $data->Pembeli->jenis_kelamin }}</td>
+                <td>{{ $data->jumlah }}</td>
+                <td>{{ $data->tanggal_transaksi }}</td>
             </tr>
         @endforeach
     </table>

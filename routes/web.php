@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\Barang;
 use App\Models\Siswa;
+use App\Models\Pengguna;
+use App\Models\Telepon;
+use App\Models\Produk;
+use App\Models\Barang2;
+use App\Models\Pembeli;
+use App\Models\Transaksi;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,4 +115,34 @@ Route::get('/Siswa', function () {
     // $b->save();
 
     return view('tampil_siswa', compact('b'));
+});
+
+Route::get('/pengguna', function () {
+    $user = Pengguna::all();
+    return view('tampil_pengguna', compact('user'));
+});
+
+Route::get('/telepon', function () {
+    $telp = Telepon::all();
+    return view('tampil_telepon', compact('telp'));
+});
+
+Route::get('/produk', function () {
+    $product = Produk::all();
+    return view('tampil_produk', compact('product'));
+});
+
+Route::get('/barang2', function () {
+    $b2 = Barang2::all();
+    return view('tampil_barang2', compact('b2'));
+});
+
+Route::get('/pembeli', function () {
+    $pembeli = Pembeli::all();
+    return view('tampil_pembeli', compact('pembeli'));
+});
+
+Route::get('/transaksi', function () {
+    $trans = Transaksi::all();
+    return view('tampil_transaksi', compact('trans'));
 });

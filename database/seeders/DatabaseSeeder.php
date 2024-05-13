@@ -19,6 +19,14 @@ class DatabaseSeeder extends Seeder
         // $this->call(PostsTableSeeder::class);
         $this->call(BarangsTableSeeder::class);
         $this->call(SiswasTableSeeder::class);
+        $this->call(PenggunasTableSeeder::class);
+        // $this->call(TablesTableSeeder::class);
+        $this->call(TeleponsTableSeeder::class);
+        $this->call(MereksTableSeeder::class);
+        $this->call(ProduksTableSeeder::class);
+        $this->call(Barang2sTableSeeder::class);
+        $this->call(PembelisTableSeeder::class);
+        $this->call(TransaksisTableSeeder::class);
         
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

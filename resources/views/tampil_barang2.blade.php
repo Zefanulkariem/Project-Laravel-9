@@ -11,24 +11,18 @@
         <tr>
             <th>No</th>
             <th>ID</th>
-            <th>nama</th>
-            <th>jenis kelamin</th>
-            <th>alamat</th>
-            <th>agama</th>
-            <th>telepon</th>
-            <th>email</th>
+            <th>Nama Barang</th>
+            <th>Harga</th>
+            <th>Stok</th>
         </tr>
         @php $no = 1; @endphp
-        @foreach ($b as $data)
+        @foreach($b2 as $data)
             <tr>
                 <td>{{ $no++ }}</td>
-                <td>{{ $data->id}}</td>
-                <td>{{ $data->nama}}</td>
-                <td>{{ $data->jk}}</td>
-                <td>{{ $data->alamat}}</td>
-                <td>{{ $data->agama}}</td>
-                <td>{{ $data->telepon}}</td>
-                <td>{{ $data->email}}</td>
+                <td>{{ $data->id }}</td>
+                <td>{{ $data->nama_barang }}</td>
+                <td>{{ $data->harga }}</td>
+                <td>{{ $data->stok }}</td>
             </tr>
         @endforeach
     </table>

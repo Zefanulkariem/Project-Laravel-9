@@ -17,7 +17,7 @@
         @php $no = 1; @endphp
         @foreach ( $a as $data )
             <tr>
-                <td>{{$no}}</td>
+                <td>{{$no++}}</td>
                 <td>{{$data->id}}</td>
                 <td>{{$data->barang}}</td>
                 <td>{{$data->jumlah}}</td>

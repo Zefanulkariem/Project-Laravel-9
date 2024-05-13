@@ -7,28 +7,21 @@
     <title>Document</title>
 </head>
 <body>
+    <h1 align="center">Data Tabel Pegguna</h1> <br>
     <table border="1" align="center">
         <tr>
             <th>No</th>
             <th>ID</th>
-            <th>nama</th>
-            <th>jenis kelamin</th>
-            <th>alamat</th>
-            <th>agama</th>
-            <th>telepon</th>
-            <th>email</th>
+            <th>nomor_telepon</th>
+            <th>nama pengguna</th>
         </tr>
         @php $no = 1; @endphp
-        @foreach ($b as $data)
+        @foreach ($telp as $data)
             <tr>
                 <td>{{ $no++ }}</td>
                 <td>{{ $data->id}}</td>
-                <td>{{ $data->nama}}</td>
-                <td>{{ $data->jk}}</td>
-                <td>{{ $data->alamat}}</td>
-                <td>{{ $data->agama}}</td>
-                <td>{{ $data->telepon}}</td>
-                <td>{{ $data->email}}</td>
+                <td>{{ $data->nomor_telepon}}</td>
+                <td>{{ $data->Pengguna->nama}}</td>
             </tr>
         @endforeach
     </table>
