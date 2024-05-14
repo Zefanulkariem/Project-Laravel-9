@@ -8,8 +8,12 @@ use App\Models\Pengguna;
 use App\Models\Telepon;
 use App\Models\Produk;
 use App\Models\Barang2;
+use App\Models\Merek;
 use App\Models\Pembeli;
 use App\Models\Transaksi;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\MerekController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,9 +60,9 @@ Route::get('vegetable', function () {         // router basic passing data to vi
     return view('vegetable_page', ['buah' => $fruit]); 
 });
 
-Route::get('produk/{nama}', function ($nama) {// router parameter
-    return "produk: $nama"; 
-});
+// Route::get('produk/{nama}', function ($nama) {// router parameter
+//     return "produk: $nama"; 
+// });
 
 // router parameter nugas
 Route::get('badan/{nama}/{berat}/{tinggi}', function ($nama, $berat, $tinggi) {
@@ -146,3 +150,14 @@ Route::get('/transaksi', function () {
     $trans = Transaksi::all();
     return view('tampil_transaksi', compact('trans'));
 });
+
+Route::get('merek',[MerekController::class,'nampil']);
+Route::get('merek/{id}',[MerekController::class,'show']);
+
+
+Route::get('post',[PostController::class,'nampilin']);
+Route::get('post/{id}',[PostController::class,'show']);
+
+
+Route::get('produk',[ProdukController::class,'tampil']);
+Route::get('produk/{id}',[ProdukController::class,'show']);
