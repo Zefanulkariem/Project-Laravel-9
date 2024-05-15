@@ -61,9 +61,9 @@ Route::get('vegetable', function () {         // router basic passing data to vi
 });
 
 // Route::get('produk/{nama}', function ($nama) {// router parameter
-//     return "produk: $nama"; 
-// });
-
+    //     return "produk: $nama"; 
+    // });
+    
 // router parameter nugas
 Route::get('badan/{nama}/{berat}/{tinggi}', function ($nama, $berat, $tinggi) {
     $bmi = $berat / (($tinggi / 100) ** 2);
@@ -108,7 +108,7 @@ Route::get('/Siswa', function () {
     // $b = Siswa::find(5);
     // $b = Siswa::where('jk','like','%l%')->get();
 
-
+    
     // $b = new Siswa;                 //merupakan cara untuk menmbahkan data/value
     // $b->nama = "bisma hensom";
     // $b->jk = "l";
@@ -117,7 +117,7 @@ Route::get('/Siswa', function () {
     // $b->telepon = "85704369462";
     // $b->email = "bism@gmail.com";
     // $b->save();
-
+    
     return view('tampil_siswa', compact('b'));
 });
 
@@ -161,3 +161,12 @@ Route::get('post/{id}',[PostController::class,'show']);
 
 Route::get('produk',[ProdukController::class,'tampil']);
 Route::get('produk/{id}',[ProdukController::class,'show']);
+//
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//
+
+use App\Http\Controllers\BrandController;
+Route::resource('brand',BrandController::class);
+// Route::get('brand/{id}',[ProdukController::class,'show']);
