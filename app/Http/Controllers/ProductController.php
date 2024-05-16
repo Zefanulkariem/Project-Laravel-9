@@ -12,6 +12,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $product = Product::all();
@@ -35,6 +40,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $product = new Product;
@@ -42,6 +48,14 @@ class ProductController extends Controller
         $product->price = $request->price; //perhatikan jalurnya!
         $product->description = $request->description; //perhatikan jalurnya!
         $product->id_brand = $request->id_brand; //perhatikan jalurnya!
+        
+        //upload image
+        if($request->hasFile('cover')){
+            $img = $request->file('cover');
+            $name = rand(1000,9000) . $img->getClientOriginalName();
+            $img->move('image/product', $name);
+            $product->cover= $name;
+        }
         $product->save();
         return redirect()->route('product.index')->with('success', 'Data berhasil dihapus');
     }
@@ -85,6 +99,16 @@ class ProductController extends Controller
         $product->price = $request->price; //perhatikan jalurnya!
         $product->description = $request->description; //perhatikan jalurnya!
         $product->id_brand = $request->id_brand; //perhatikan jalurnya!
+
+        //upload image
+        if($request->hasFile('cover')){
+            $product->deleteImage();
+            $img = $request->file('cover');
+            $name = rand(1000,9000) . $img->getClientOriginalName();
+            $img->move('image/product', $name);
+            $product->cover= $name;
+        }
+
         $product->save();
         return redirect()->route('product.index')->with('success', 'Data berhasil ditambahkan');
     }

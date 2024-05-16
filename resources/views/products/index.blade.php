@@ -5,17 +5,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-
+            @if(session('success'))
+                <div class="alert alert-success fade show" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">Data Product</div>
 
                 <div class="card-body">
                     <a href="{{route('product.create')}}" class="btn btn-primary">Add Data</a>
-                    @if(session('success'))
-                        <div class="alert alert-success fade show" role="alert">
-                            {{ session('success') }}
-                        </div>
-                    @endif
                     <table class="table table-striped">
                         <thead>
                           <tr>
@@ -24,6 +23,7 @@
                             <th scope="col">Price</th>
                             <th scope="col">Description</th>
                             <th scope="col">Brand_Name</th>
+                            <th scope="col">Cover</th>
                             <th scope="col">Action</th>
                           </tr>
                         </thead>
@@ -33,9 +33,12 @@
                                 <tr>
                                 <th scope="row">{{$no++}}</th>
                                 <td>{{ $data->name_product}}</td>
-                                <td>{{ $data->price}}</td>
+                                <td>Rp.{{ $data->price}}</td>
                                 <td>{{ $data->description}}</td>
                                 <td>{{ $data->brand->name_brand}}</td> {{--menghubungkan data lain--}}
+                                <td>
+                                    <img src="{{asset('/image/product/' . $data->cover) }}" width="100">
+                                </td>
                                 <form action="{{route('product.destroy', $data->id)}}" method="POST"> {{--postnya badag! & perhatikan $brand id--}}
                                     @csrf
                                     @method('DELETE')

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ProdukController extends Controller
 {
     public function tampil(){
-        $produk = Produk::all();
+        $produk = Produk::all();//product
         return view('produks\index', compact('produk'));
     }
 
