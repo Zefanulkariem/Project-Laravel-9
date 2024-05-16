@@ -8,13 +8,14 @@
             <div class="card">
                 <div class="card-header">Data Brand</div>
                 <div class="card-body">
-                    <form action="{{route('brand.store')}}" method="POST"> {{--//postnya badag!--}}
+                    <form action="{{route('brand.update', $brand->id)}}" method="POST"> {{--postnya badag! & perhatikan $brand id--}}
                         @csrf
+                        @method('PUT')
                         <div class="mb-3">
-                            <label class="form-label">brand Name</label>
-                            <input type="text" class="form-control" name="name_brand">
+                            <label class="form-label">Brand Name</label>
+                            <input type="text" class="form-control" name="name_brand" value="{{$brand->name_brand}}">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-success">Edit</button>
                         <a href="{{url('brand')}}" class="btn btn-danger">Back</a>
                     </form>
                 </div>

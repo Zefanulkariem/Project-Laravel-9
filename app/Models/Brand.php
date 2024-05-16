@@ -13,8 +13,8 @@ class Brand extends Model
 
     public $timelaps = true;
 
-    // public function product()
-    // {
-    //     return $this->hasOne(Product::class);
-    // }
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

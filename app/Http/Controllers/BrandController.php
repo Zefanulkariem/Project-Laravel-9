@@ -61,9 +61,10 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brand = Brand::findOrFail($id);
+        return view('brands.edit', compact('brand'));
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -73,9 +74,12 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $brand = Brand::findOrFail($id);
+        $brand->name_brand = $request->name_brand; //perhatikan jalurnya!
+        $brand->save();
+        return redirect()->route('brand.index');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -84,6 +88,8 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $brand = Brand::findOrFail($id);
+        $brand->delete();
+        return redirect()->route('brand.index');
     }
 }
